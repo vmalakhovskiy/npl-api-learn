@@ -56,3 +56,64 @@ class AudioRecorder {
         }
     }
 }
+
+import Speech
+
+class AudioAnalyzer {
+    private let audioEngine = AVAudioEngine()
+    private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
+    private var recognitionTask: SFSpeechRecognitionTask?
+    private var stringResult: String?
+    var recording = false
+    
+    func startRecognition() throws {
+        stringResult = nil
+        let audioSession = AVAudioSession.sharedInstance()
+        try audioSession.setCategory(.record, mode: .measurement, options: .duckOthers)
+        try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
+        let inputNode = audioEngine.inputNode
+        
+        recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
+        guard let recognitionRequest = recognitionRequest else { return }
+        recognitionRequest.shouldReportPartialResults = true
+        
+        let recognizer = SFSpeechRecognizer()
+        recognitionTask = recognizer?.recognitionTask(with: recognitionRequest) { [weak self] (result, error) in
+            var isFinal = false
+            
+            if let result = result {
+                isFinal = result.isFinal
+                self?.stringResult = result.bestTranscription.formattedString
+            }
+            
+            if error != nil || isFinal {
+                self?.audioEngine.stop()
+                self?.audioEngine.inputNode.removeTap(onBus: 0)
+
+                self?.recognitionRequest = nil
+                self?.recognitionTask = nil
+            }
+        }
+        
+        let recordingFormat = inputNode.outputFormat(forBus: 0)
+        inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer: AVAudioPCMBuffer, when: AVAudioTime) in
+            self.recognitionRequest?.append(buffer)
+        }
+
+        audioEngine.prepare()
+        try audioEngine.start()
+        recording = true
+    }
+    
+    func stopRecognition() -> String? {
+        audioEngine.stop()
+        audioEngine.inputNode.removeTap(onBus: 0)
+
+        recognitionRequest = nil
+        recognitionTask = nil
+        
+        recording = false
+        
+        return stringResult
+    }
+}
