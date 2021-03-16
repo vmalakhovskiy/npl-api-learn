@@ -29,7 +29,7 @@ class ViewController: UIViewController {
     var score: Double = 0 {
         didSet {
             //UPDATE SCORE ON UI
-            self.wordLabel.text = String(score)
+            self.wordLabel.text = String(Int(score))
         }
     }
     
