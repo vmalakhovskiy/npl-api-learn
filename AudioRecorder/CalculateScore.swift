@@ -15,7 +15,7 @@ class CalculateScore {
         var distanceTally: Double = 0
         for x in userInput {
             if let embedding = NLEmbedding.wordEmbedding(for: .english) {
-                print("Distance between '\(keyword.lowercased())' & '\(x)' = \(embedding.distance(between: x.lowercased(), and: keyword.lowercased()))")
+                print("Distance between '\(keyword.lowercased())' & '\(x.lowercased())' = \(embedding.distance(between: x.lowercased(), and: keyword.lowercased()))")
                 distanceTally += embedding.distance(between: x.lowercased(), and: keyword.lowercased())
             }
         }
