@@ -16,36 +16,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="CG5-y9-K2I">
-                                <rect key="frame" x="182.5" y="409.5" width="49" height="87"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="USZ-wl-4aS">
-                                        <rect key="frame" x="0.0" y="0.0" width="49" height="30"/>
-                                        <state key="normal" title="Record"/>
-                                        <connections>
-                                            <action selector="recordWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wC8-Gh-CxM"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HiI-vb-IRs">
-                                        <rect key="frame" x="0.0" y="57" width="49" height="30"/>
-                                        <state key="normal" title="Play"/>
-                                        <connections>
-                                            <action selector="playWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Mb7-2K-Nmp"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fxq-NX-c0P">
+                                <rect key="frame" x="32" y="770" width="350" height="60"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="DAw-bP-FPW"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="fXe-dX-RqM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="Begin">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hello." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6bY-jz-kaI">
+                                <rect key="frame" x="32" y="124" width="350" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vaD-2G-oMt">
+                                <rect key="frame" x="32" y="176" width="350" height="215"/>
+                                <string key="text">this is a game of words. 
+
+you have 30 seconds to say out loud as many words similar in meaning to the given word.</string>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="CG5-y9-K2I" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Ybi-Qs-qmd"/>
-                            <constraint firstItem="CG5-y9-K2I" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="ogg-WU-5eT"/>
+                            <constraint firstItem="vaD-2G-oMt" firstAttribute="top" secondItem="6bY-jz-kaI" secondAttribute="bottom" constant="16" id="505-bC-0IM"/>
+                            <constraint firstItem="fxq-NX-c0P" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="DRT-3f-DG4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fxq-NX-c0P" secondAttribute="bottom" constant="32" id="Q05-n4-fjy"/>
+                            <constraint firstItem="6bY-jz-kaI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="80" id="W3V-iq-ff4"/>
+                            <constraint firstItem="vaD-2G-oMt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="WAY-CN-82e"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vaD-2G-oMt" secondAttribute="trailing" constant="32" id="ayk-LP-sWm"/>
+                            <constraint firstItem="6bY-jz-kaI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="gC9-9f-EaY"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6bY-jz-kaI" secondAttribute="trailing" constant="32" id="q06-m5-QDG"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fxq-NX-c0P" secondAttribute="trailing" constant="32" id="rlJ-GX-ia8"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="playButton" destination="HiI-vb-IRs" id="Stb-cj-Rpd"/>
-                        <outlet property="recordButton" destination="USZ-wl-4aS" id="9wu-hA-Zvf"/>
+                        <outlet property="helloLabel" destination="6bY-jz-kaI" id="QMi-zC-Pt1"/>
+                        <outlet property="recordButton" destination="fxq-NX-c0P" id="z9w-6U-sEV"/>
+                        <outlet property="wordLabel" destination="vaD-2G-oMt" id="Z9g-ye-gBY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
