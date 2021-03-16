@@ -152,8 +152,9 @@ class ViewController: UIViewController {
     
     func gameFinished() {
         timeLabel.text = ""
-        helloLabel.text = "congratz"
-        wordLabel.text = "your score is 5 words"
+        helloLabel.text = "congratz, your score is"
+        wordLabel.text = "5 words"
+        stopRecording()
         
         UIView.animate(withDuration: 0.1) {
             self.recordButton.alpha = 1
