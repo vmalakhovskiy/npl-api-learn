@@ -14,12 +14,21 @@ class ViewController: UIViewController {
     
     var analyzer: AudioAnalyzer?
     
+    var score: Double = 0 {
+        didSet {
+            //UPDATE SCORE ON UI
+        }
+    }
+    
     var isPlayingStateObservation: NSKeyValueObservation?
+    
+    var keywords = ["Road", "Bus", "Engine", "Bottle", "Car", "Microwave", "Tent", "Fire"]
+    var keyword: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         playButton.isEnabled = false
-        // Do any additional setup after loading the view.
+        keyword = keywords[Int.random(in: 0..<keywords.count)]
     }
     
     func startRecording() {
@@ -31,8 +40,11 @@ class ViewController: UIViewController {
     }
     
     func stopRecording() {
-        let result = analyzer?.stopRecognition()
-        print(result)
+        if let result = analyzer?.stopRecognition(), let keyword = keyword {
+            print(result)
+            ///Separate into individual words
+            score = CalculateScore().computeTotalDistance(keyword: keyword, userInput: result.split{$0 == " "}.map(String.init))
+        }
         recordButton.setTitle("Start Recording", for: .normal)
         playButton.isEnabled = true
     }
